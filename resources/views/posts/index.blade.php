@@ -2,6 +2,7 @@
 
 @section('content')
     <h1>Posts</h1>
+    <br>
     @if(count($posts) > 1)
         @foreach ($posts as $post)
             <div class="card">
@@ -9,7 +10,8 @@
                     <h3>{{$post->title}}</h3>
                     <p>Excerpt comes here!</p>
                     <small>Written on {{$post->created_at}}</small>
-                    <a href="#" class="btn btn-primary">View Post</a>
+                    <br>
+                    <a href="/posts/{{$post->id}}" class="btn btn-primary">View Post</a>
                 </div>
             </div>
         @endforeach
