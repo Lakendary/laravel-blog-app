@@ -7,7 +7,7 @@
         @foreach ($posts as $post)
             <div class="card">
                 <div class="card-body">
-                    <h3>{{$post->title}}</h3>
+                    <h3><a href="/posts/{{$post->id}}">{{$post->title}}</a></h3>
                     <p>Excerpt comes here!</p>
                     <small>Written on {{$post->created_at}}</small>
                     <br>
