@@ -14,7 +14,8 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        //$posts = Post::all();
+        $posts = Post::orderBy('title', 'desc')->get();
         return view('posts.index')->with('posts', $posts);
     }
 
