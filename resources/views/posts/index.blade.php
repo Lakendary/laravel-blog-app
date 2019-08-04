@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-    <h3>Posts</h3>
-    @if(count($posts) > 0)
+    <h1>Posts</h1>
+    @if(count($posts) > 1)
         @foreach ($posts as $post)
             <div class="well">
-                <h3>{{$post->$title}}</h3>
+                <h3>{{$post->title}}</h3>
             </div>
         @endforeach
     @else
