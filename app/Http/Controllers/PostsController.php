@@ -55,15 +55,35 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
+        // Validate post
         $this->validate($request, [
             'title' => 'required',
-            'body' => 'required'
+            'body' => 'required',
+            'cover_image' => 'image|nullable|max:1999'
         ]);
+
+        // Handle File Upload
+        if($request->hasFile('cover_image')){
+            // Get filename with the extension
+            $fileNameWithExt = $request->file('cover_image')->getClientOriginalImage();
+            // Get just file name
+            $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+            // Get just extension
+            $extension = $request->file('cover_image')->getOriginalClientExtension();
+            // Filename to store
+            $fileNameToStore = $fileName.'_'.time().'.'.$extension;
+            // Upload Image
+            $path = $request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
+        } else {
+            $fileNameToStore = 'noimage.jpg';
+        }
+
         // Create Post
         $post = new Post;
         $post->title = $request->input('title');
         $post->body = $request->input('body');
         $post->user_id = auth()->user()->id;
+        $post->cover_image = $fileNameToStore;
         $post->save();
 
         return redirect('/posts')->with('success', 'Post Created');
