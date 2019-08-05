@@ -14,30 +14,26 @@
                     @endif
                     <a href="/posts/create" class="btn btn-primary">Create Post</a>
                     <h3>Your Blog Posts</h3>
+                    @if(count($posts) > 0)
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tr>
+                                    <th>Title</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                                @foreach ($posts as $post)
+                                    <tr>
+                                        <td>{{$post->$title}}</td>
+                                        <td><a href="/posts/{{$post->id}}/edit" class="btn btn-warning">Edit Post</a></td>
+                                        <td></td>
+                                    </tr>
+                                @endforeach
+                            </table>
+                        </div>
+                    @endif
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            @if(count($posts) > 0)
-                <div class="table-responsive">
-                    <table class="table">
-                        <tr>
-                            <th>Title</th>
-                            <th></th>
-                            <th></th>
-                        </tr>
-                        @foreach ($posts as $post)
-                            <tr>
-                                <td>{{$post->$title}}</td>
-                                <td><a href="/posts/{{$post->id}}/edit" class="btn btn-warning">Edit Post</a></td>
-                                <td></td>
-                            </tr>
-                        @endforeach
-                    </table>
-                </div>
-            @endif
         </div>
     </div>
 </div>
