@@ -6,7 +6,7 @@
     @if(count($posts) > 0)
         @foreach ($posts as $post)
             <div class="card">
-                <img class="card-img-top" src="/storage/cover_images/{{$post->cover_image}}" alt="Card image cap">
+                <img class="card-img-top" src="..." alt="Card image cap">
                 <div class="card-body">
                     <h3><a href="/posts/{{$post->id}}">{{$post->title}}</a></h3>
                     <p>Excerpt comes here!</p>
