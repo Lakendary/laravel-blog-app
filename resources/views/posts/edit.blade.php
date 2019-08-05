@@ -13,6 +13,9 @@
             {{Form::textarea('body', $post->body, ['id' => 'article-ckeditor', 'class' => 'form-control', 'placeholder' => 'Body Text'])}}
         </div>
         {{Form::hidden('_method', 'PUT')}}
+        <div class="form-group">
+            {{Form::file('cover_image')}}
+        </div>
         {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
     {!! Form::close() !!}
 @endsection
