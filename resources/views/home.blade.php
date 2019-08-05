@@ -15,22 +15,24 @@
                     <a href="/posts/create" class="btn btn-primary">Create Post</a>
                     <h3>Your Blog Posts</h3>
                     @if(count($posts) > 0)
-                        <div class="table-responsive">
-                            <table class="table">
+                        <table class="table table-dark">
+                            <thead>
                                 <tr>
-                                    <th>Title</th>
-                                    <th></th>
-                                    <th></th>
+                                <th scope="col">Title</th>
+                                <th scope="col"></th>
+                                <th scope="col"></th>
                                 </tr>
-                                @foreach ($posts as $post)
-                                    <tr>
-                                        <td>{{$post->$title}}</td>
-                                        <td><a href="/posts/{{$post->id}}/edit" class="btn btn-warning">Edit Post</a></td>
-                                        <td></td>
-                                    </tr>
-                                @endforeach
-                            </table>
-                        </div>
+                            </thead>
+                            <tbody>
+                            @foreach ($posts as $post)
+                                <tr>
+                                <th>{{$post->title}}</th>
+                                <td><a href="/posts/{{$post->id}}/edit" class="btn btn-warning">Edit Post</a></td>
+                                <td></td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
                     @endif
                 </div>
             </div>
